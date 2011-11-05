@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>Wicket Facebook Application</display-name>
+	<filter>
+		<filter-name>Application</filter-name>
+		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+		<init-param>
+			<param-name>applicationClassName</param-name>
+			<param-value>blg.bhdrkn.facebook.application.FacebookApplication</param-value>
+		</init-param>
+	</filter>
+	<filter>
+        <filter-name>FBOAuth</filter-name>
+        <filter-class>blg.bhdrkn.facebook.filter.FacebookAuthentication</filter-class>
+    </filter>
+	<filter-mapping>
+		<filter-name>Application</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+        <filter-name>FBOAuth</filter-name>
+        <url-pattern>/fbauth</url-pattern>
+    </filter-mapping>
+</web-app>
